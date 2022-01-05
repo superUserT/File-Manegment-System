@@ -1,0 +1,205 @@
+﻿@*@model IEnumerable<FreshGoldPractice2.Models.AddendumUpload>*@
+@*@model FreshGoldPractice2.Models.AddendumUpload*@
+@using FreshGoldPractice2.Models
+@model AddendumUpload
+@{
+    ViewData["Title"] = "ViewUpload";
+}
+
+<h1>View File Content</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="ExportExcel" asp-controller="File">Export Table to Excel Addendum File</a>
+    <a class="btn btn-primary" asp-action="ExportPDF" asp-controller="File">Export Table to PDF Report</a>
+    @*<a asp-action="Create">Create New</a>*@
+</p>
+<table class="table table-responsive-md table-striped  " align="left" border="1">
+    <thead class="table-light">
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.RecordType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocCodeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PalletId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganisationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommodityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VarietyId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SizeCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetMarket)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CartonQuant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PalletQuant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntakeDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OriginDepot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InspectionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrigIntakeDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orchard)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConsNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetRegion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PackhouseCodeId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            @for (int i = 0; i < 25; i++)
+            {
+
+                <tr>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => Model.Id)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.RecordType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.LocCodeId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.PalletId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.OrganisationId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.CommodityId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.VarietyId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Pack)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Grade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Mark)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.SizeCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.InvCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.FarmId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.TargetMarket)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.CartonQuant)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.PalletQuant)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.IntakeDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.OriginDepot)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.InspectionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.OrigIntakeDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Orchard)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.ConsNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Weight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.TargetRegion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.PackhouseCodeId)
+                    </td>
+                    @*<td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>*@
+                </tr>
+            }
+        }
+        else if (Model == null)
+        {
+            <span>no items found</span>
+        }
+
+    </tbody>
+</table>
+
+
+<a class="btn btn-primary" asp-action="ExportExcel" asp-controller="File">Export Table to Excel Addendum File</a>
+<a class="btn btn-primary" asp-action="ExportPDF" asp-controller="File">Export Table to PDF Report</a>
+

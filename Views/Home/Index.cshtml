@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<body>
+
+
+    <script type="text/javascript">
+        window.__be = window.__be || {};
+        window.__be.id = "59cd403b8187680007244146"; // put your chat widget id here
+
+        var BE_API = window.BE_API || {};
+
+        // open chat widget window after load
+        BE_API.onLoad = function () {
+            BE_API.openChatWidget();
+        };
+
+        (function () {
+            var be = document.createElement('script'); be.type = 'text/javascript'; be.async = true;
+            be.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.botengine.ai/widget/plugin.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(be, s);
+        })();
+    </script>
+
+    <style type="text/css">
+        #botengine-chat {
+            width: 100% !important;
+        }
+    </style>
+
+        <main role="main" >
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-black fw-bold"
+        style="background-image: url('https://th.bing.com/th/id/OIP.OO_Gxuo_RPWc0fa_Pq-y2wHaHa?pid=ImgDet&rs=1'); " >       
+        <div class="container" >
+        <h1 class="display-3"  style=" color: white; text-shadow: 2px 2px 4px #000000;"><b> Welcome To FreshGold's File Management System</b></h1 >
+        <p style="color:ghostwhite;"text-shadow: 2px 2px 4px #000000;"> Head to the Navigation bar to navigate the site.</p >
+        <p > <a class="btn btn-primary btn-lg"asp-area="" asp-controller="Home" asp-action="Privacy" role="button" > Learn more »</a > </p >
+        </div >
+        </div >
+
+        <div class="container" >
+        <div class="row" >
+        <div class="col-md-4" >
+        <h2 >Upload Text Files</h2 >
+        <p > Follow this link to upload a CSV file for editing.</p >
+        <p > <a class="btn btn-secondary" asp-area="" asp-controller="Upload" asp-action="Index" role="button" > Upload »</a > </p >
+        </div >
+        <div class="col-md-4" >
+        <h2 >Upload Addendum Documents</h2 >
+        <p > Follow this link to upload an edited Addendum document.</p >
+        <p > <a class="btn btn-secondary" asp-area="" asp-controller="File" asp-action="Index"   role="button" > Upload »</a > </p >
+        </div >
+        <div class="col-md-4" >
+        <h2 >Need Help?</h2 >
+        <p > Find out more about the system.</p >
+        <p > <a class="btn btn-secondary" asp-area="" asp-controller="Home" asp-action="Privacy" role="button" > Learn More »</a > </p >
+        </div >
+        </div >
+
+        <hr >
+
+        </div > <!-- /container -->
+        </main >
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="./Jumbotron Template for Bootstrap_files/jquery-3.2.1.slim.min.js.download" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous" > </script >
+        <script > window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script >
+        <script src="./Jumbotron Template for Bootstrap_files/popper.min.js.download" > </script >
+        <script src="./Jumbotron Template for Bootstrap_files/bootstrap.min.js.download" > </script >
+
+
+        </body >

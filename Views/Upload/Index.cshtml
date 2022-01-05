@@ -1,0 +1,219 @@
+﻿@model UploadViewModel
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.IsInRole("FreshGold Employee"))
+{
+    <h4>Upload Addendum to Export Document</h4>
+    <br />
+    <hr />
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success alert-dismissible" style="margin-top:20px">
+            @ViewBag.Message
+        </div>
+    }
+    @if (ViewBag.ExtMessage != null)
+    {
+        <div class="alert alert-danger alert-dismissible" style="margin-top:20px">
+            @ViewBag.ExtMessage
+        </div>
+    }   
+   <h3>Search for a File</h3>
+    <div>
+        <form method="get" asp-controller="Upload" asp-action="Index">
+            <p>
+                <input type="search" placeholder="Enter Name of File or the file Description..." value="@ViewData["GetFileDetails"]" name="SearchItem" style="width:500px" />
+                <input type="submit" value="Search" class="btn btn-primary" />
+                <a asp-action="Index">Get File Details</a>
+            </p>
+
+        </form>
+
+
+        
+
+
+
+    </div>
+    <hr>
+    <h3>Upload File</h3>
+    <form method="post" enctype="multipart/form-data">
+
+        <input type="file" name="files" multiple required />
+        <input type="text" autocomplete="off" placeholder="Enter File Description" name="description" required />
+        <button type="submit" class="btn btn-primary" asp-controller="Upload" asp-action="UploadToFileSystem">Upload to Local Drive</button>
+        <button class="btn btn-success" type="submit" asp-controller="Upload" asp-action="UploadToDatabase">Upload to Database</button>
+
+    </form>
+    <hr />
+    <h4>Files In Local Drive</h4>
+    @if (Model.UploadsOnSystem.Count == 0)
+    {
+        <caption>No Records Found</caption>
+    }
+    else
+    {
+        <caption>List of Uploads on System</caption>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>File Type</th>
+                    <th>Created On</th>
+                    <th>Uploaded By</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var file in Model.UploadsOnSystem)
+                {
+                <tr>
+                    <th>@file.Id</th>
+                    <td>@file.Name</td>
+                    <td>@file.Description</td>
+                    <td>@file.FileType</td>
+                    <td>@file.CreatedOn</td>
+                    <td>@file.UploadedBy</td>
+
+                    <td>
+                        <a type="button" class="btn btn-primary" asp-controller="Upload" asp-action="DownloadFileFromFileSystem" asp-route-id="@file.Id">Download CSV</a>
+                        <a type="button" class="btn btn-danger" asp-controller="Upload" asp-action="DeleteFileFromFileSystem" asp-route-id="@file.Id">Delete</a>
+
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        <h4>Files In FreshGold Database</h4>
+        @if (Model.UploadsOnDatabase.Count == 0)
+        {
+            <caption>No Records Found</caption>
+        }
+        else
+        {
+            <caption>List of Uploads in Database</caption>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>File Type</th>
+                        <th>Created On</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var file in Model.UploadsOnDatabase)
+                    {
+                        <tr>
+                            <th>@file.Id</th>
+                            <td>@file.Name</td>
+                            <td>@file.Description</td>
+                            <td>@file.FileType</td>
+                            <td>@file.CreatedOn</td>
+                            <td>
+                                <a type="button" class="btn btn-primary" asp-controller="Upload" asp-action="DownloadFileFromDatabase" asp-route-id="@file.Id">Download CSV</a>
+                                <a type="button" class="btn btn-danger" asp-controller="Upload" asp-action="DeleteFileFromDatabase" asp-route-id="@file.Id">Delete</a>
+                                <a type="button" class="btn btn-success" asp-controller="Upload" asp-action="ViewUpload" asp-route-id="@file.Id">View File</a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+}
+@if (User.IsInRole("Shipping Employee"))
+{
+    <h4>Files In Local Drive</h4>
+    @if (Model.UploadsOnSystem.Count == 0)
+    {
+        <caption>No Records Found</caption>
+    }
+    else
+    {
+        <caption>List of Uploads on System</caption>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>File Type</th>
+                    <th>Created On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var file in Model.UploadsOnSystem)
+                {
+                    <tr>
+                        <th>@file.Id</th>
+                        <td>@file.Name</td>
+                        <td>@file.Description</td>
+                        <td>@file.FileType</td>
+                        <td>@file.CreatedOn</td>
+                        <td>
+                            <a type="button" class="btn btn-primary" asp-controller="Upload" asp-action="DownloadFileFromFileSystem" asp-route-id="@file.Id">Download CSV</a>
+                            <a type="button" class="btn btn-success" asp-controller="Upload" asp-action="ViewUpload" asp-route-id="@file.Id">View File</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h4>Files In FreshGold Database</h4>
+        @if (Model.UploadsOnDatabase.Count == 0)
+        {
+            <caption>No Records Found</caption>
+        }
+        else
+        {
+            <caption>List of Uploads in Database</caption>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>File Type</th>
+                        <th>Created On</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var file in Model.UploadsOnDatabase)
+                    {
+                        <tr>
+                            <th>@file.Id</th>
+                            <td>@file.Name</td>
+                            <td>@file.Description</td>
+                            <td>@file.FileType</td>
+                            <td>@file.CreatedOn</td>
+                            <td>
+                                <a type="button" class="btn btn-primary" asp-controller="Upload" asp-action="DownloadFileFromDatabase" asp-route-id="@file.Id">Download CSV</a>
+                                <a type="button" class="btn btn-success" asp-controller="Upload" asp-action="ViewUpload" asp-route-id="@file.Id">View File</a>
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+
+}
